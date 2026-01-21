@@ -2,10 +2,950 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test EyeTech Aura</title>
+  <title>EyeTech Aura – Alarmes & Vidéosurveillance Clermont-Ferrand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EyeTech Aura installe, dépanne et modernise des systèmes d'alarme intrusion et de vidéosurveillance autour de Clermont-Ferrand (≈ 30 km). Particuliers et professionnels.">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #0b1120;
+      --primary: #22c55e;
+      --primary-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+      --radius: 18px;
+      --radius-lg: 24px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 40%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.6rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.8), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-img {
+      max-height: 54px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #22c55e, #a3e635);
+      transition: width 0.16s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: transform 0.13s ease-out, box-shadow 0.13s ease-out, background 0.13s ease-out, border-color 0.13s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #022c22;
+      box-shadow: 0 12px 24px rgba(34, 197, 94, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .burger {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.85);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .burger-lines {
+      width: 16px;
+      height: 10px;
+      position: relative;
+    }
+
+    .burger-lines span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+    }
+
+    .burger-lines span:nth-child(1) { top: 0; }
+    .burger-lines span:nth-child(2) { top: 4px; width: 11px; right: auto; }
+    .burger-lines span:nth-child(3) { bottom: 0; }
+
+    main {
+      flex: 1;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 4.2rem 0 3.2rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    .hero-left {
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.6rem 0.25rem 0.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      margin-bottom: 1.3rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3.2vw, 2.9rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #22c55e, #a3e635);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.28), transparent 65%),
+                  linear-gradient(to bottom right, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.13), transparent 60%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-card-chip {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .hero-box {
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.8rem 0.9rem;
+      font-size: 0.86rem;
+    }
+
+    .hero-box-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-box span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.05rem;
+    }
+
+    .hero-card-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+      font-size: 0.72rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    /* SECTIONS GÉNÉRALES */
+
+    section {
+      padding: 3.4rem 0 1.6rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* SERVICES */
+
+    .cards-grid {
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.2rem 1.1rem;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.74rem;
+    }
+
+    .tag {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    /* ZONE */
+
+    .zone-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .zone-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.32rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .zone-pill span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.22);
+    }
+
+    .zone-line {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .zone-line strong {
+      color: var(--text);
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .contact-info {
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1.2rem 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.16rem;
+    }
+
+    .contact-value a {
+      color: #bbf7d0;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 1.25rem 1.25rem 1.35rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.55rem 0.85rem;
+      font-size: 0.9rem;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    .form-group textarea {
+      border-radius: 18px;
+      min-height: 120px;
+      resize: vertical;
+      padding-top: 0.65rem;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(34, 197, 94, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.65);
+    }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.9rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1.8rem 0 2.3rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* RESPONSIVE */
+
+    @media (min-width: 720px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+        align-items: center;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .zone-grid {
+        grid-template-columns: 1.3fr 1.5fr;
+        align-items: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.2fr 1.8fr;
+      }
+    }
+
+    @media (max-width: 799px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .burger {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding-top: 3.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Test EyeTech Aura</h1>
-  <p>Si tu vois ce texte, le site fonctionne correctement.</p>
+<div class="page">
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#top" class="logo">
+          <img src="logo-eyetech-aura.png" alt="Logo EyeTech Aura" class="logo-img">
+        </a>
+
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#zone">Zone d'intervention</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="tel:+33619583693" class="btn btn-ghost">📞 06 19 58 36 93</a>
+          <a href="#contact" class="btn btn-primary">Demander un devis</a>
+        </div>
+
+        <button class="burger" aria-label="Menu (non fonctionnel)">
+          <div class="burger-lines">
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              <span>Sécurité électronique – Secteur Clermont-Ferrand</span>
+            </div>
+
+            <h1 class="hero-title">
+              Alarmes &amp; vidéosurveillance
+              <span>clés en main</span> autour de Clermont.
+            </h1>
+
+            <p class="hero-subtitle">
+              EyeTech Aura vous accompagne pour sécuriser maisons, commerces et entreprises :
+              conseil, installation et dépannage de systèmes d’alarme intrusion et de vidéosurveillance,
+              sur Clermont-Ferrand et environ 30 km autour.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="tel:+33619583693" class="btn btn-primary">
+                📞 Appeler le 06 19 58 36 93
+              </a>
+              <a href="mailto:robinjeremy.3663@gmail.com" class="btn btn-ghost">
+                ✉️ robinjeremy.3663@gmail.com
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <div>
+                <strong>Secteur : Clermont + ~30 km</strong>
+                Lempdes, Clermont-Ferrand et communes alentours, en urbain comme en rural.
+              </div>
+              <div>
+                <strong>Clients : particuliers &amp; pros</strong>
+                Maisons, commerces, bureaux, entrepôts, petites entreprises.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-inner">
+                <div class="hero-card-header">
+                  <div class="hero-card-title">Vue d’ensemble</div>
+                  <div class="hero-card-chip">Services définis sur place</div>
+                </div>
+
+                <div class="hero-card-grid">
+                  <div class="hero-box">
+                    <div class="hero-box-label">Alarmes intrusion</div>
+                    Installation ou adaptation
+                    <span>centrale, détecteurs, sirènes…</span>
+                  </div>
+                  <div class="hero-box">
+                    <div class="hero-box-label">Vidéosurveillance</div>
+                    Caméras &amp; enregistreurs
+                    <span>vision à distance possible</span>
+                  </div>
+                  <div class="hero-box">
+                    <div class="hero-box-label">Modernisation</div>
+                    Mise à niveau système
+                    <span>remplacement anciens équipements</span>
+                  </div>
+                  <div class="hero-box">
+                    <div class="hero-box-label">Dépannage</div>
+                    Diagnostic sur place
+                    <span>pannes, défauts, réglages</span>
+                  </div>
+                </div>
+
+                <div class="hero-card-pill-row">
+                  <span class="pill">Services à définir sur place</span>
+                  <span class="pill">Solutions sur mesure</span>
+                  <span class="pill">Installation propre</span>
+                  <span class="pill">Explications claires</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Services</div>
+          <h2 class="section-title">Des solutions adaptées à votre site</h2>
+          <p class="section-subtitle">
+            Les besoins ne sont pas les mêmes pour une maison, un commerce ou un entrepôt.
+            Les services sont définis directement sur place, à partir de votre situation réelle.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon">🧭</div>
+            <h3 class="card-title">Visite &amp; conseil sur place</h3>
+            <p class="card-text">
+              Déplacement sur votre adresse, analyse des accès, des risques et des contraintes,
+              puis explication des différentes possibilités avec un langage simple et concret.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Particuliers &amp; pros</span>
+              <span class="tag">Recommandations claires</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🛠️</div>
+            <h3 class="card-title">Installation &amp; modernisation</h3>
+            <p class="card-text">
+              Mise en place ou adaptation de votre système d’alarme et/ou de vidéosurveillance,
+              ajout de matériel, remplacement de centrales ou caméras trop anciennes, etc.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Installation propre</span>
+              <span class="tag">Matériel adapté au besoin</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">Dépannage &amp; réglages</h3>
+            <p class="card-text">
+              Intervention en cas de panne, de défaut récurrent ou de problème d’utilisation.
+              Diagnostic sur place et remise en service lorsque c’est possible.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Diagnostic terrain</span>
+              <span class="tag">Remise en service</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZONE -->
+    <section id="zone">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Zone d'intervention</div>
+          <h2 class="section-title">Clermont-Ferrand et environs (≈ 30 km)</h2>
+          <p class="section-subtitle">
+            EyeTech Aura intervient sur le secteur clermontois et les communes autour, en fonction des projets.
+          </p>
+        </div>
+
+        <div class="zone-grid">
+          <div>
+            <div class="zone-pill">
+              <span></span>
+              Intervention sur rendez-vous
+            </div>
+            <p class="section-subtitle">
+              Basé à <strong>Lempdes (63)</strong>, EyeTech Aura se déplace
+              sur le bassin de Clermont-Ferrand et les communes situées environ à 30 km.
+            </p>
+          </div>
+          <div>
+            <p class="zone-line">
+              <strong>Secteur principal :</strong> Lempdes, Clermont-Ferrand, Cournon, Aubière, Riom,
+              et communes voisines.
+            </p>
+            <p class="zone-line">
+              <strong>Autres secteurs :</strong> étude possible au cas par cas selon la nature du projet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Parlons de votre besoin en sécurité</h2>
+          <p class="section-subtitle">
+            Un appel ou un message suffit pour prendre rendez-vous sur place
+            et voir ensemble ce qui est possible pour votre maison, commerce ou entreprise.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-row">
+              <div class="contact-label">Téléphone</div>
+              <div class="contact-value">
+                <a href="tel:+33619583693">06 19 58 36 93</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a href="mailto:robinjeremy.3663@gmail.com">robinjeremy.3663@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-label">Type de clients</div>
+              <div class="contact-value">
+                Particuliers, commerces, petites entreprises, bureaux, entrepôts.
+              </div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-label">Services</div>
+              <div class="contact-value">
+                Services définis sur place, en fonction de votre situation et de vos attentes.
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" action="mailto:robinjeremy.3663@gmail.com" method="post" enctype="text/plain">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Nom / société</label>
+                <input id="name" name="Nom" type="text" placeholder="Votre nom ou raison sociale" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" placeholder="vous@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="Téléphone" type="tel" placeholder="Votre numéro de téléphone">
+              </div>
+              <div class="form-group">
+                <label for="message">Votre besoin</label>
+                <textarea id="message" name="Message" placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."></textarea>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary">
+                ✉️ Envoyer la demande
+              </button>
+              <p>
+                En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
+                au sujet de votre demande.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>© <span id="year"></span> EyeTech Aura – Tous droits réservés.</div>
+        <div>Site vitrine – Alarmes intrusion &amp; vidéosurveillance – Secteur Clermont-Ferrand.</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
