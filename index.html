@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>EyeTech Aura – Alarmes & Vidéosurveillance Clermont-Ferrand</title>
+  <title>EyeTech Aura – Alarmes &amp; Vidéosurveillance Clermont-Ferrand</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="EyeTech Aura installe, dépanne et modernise des systèmes d'alarme intrusion et de vidéosurveillance autour de Clermont-Ferrand (≈ 30 km). Particuliers et professionnels.">
   <style>
@@ -80,6 +80,7 @@
     .logo-img {
       max-height: 54px;
       width: auto;
+      border-radius: 999px;
     }
 
     .nav-links {
@@ -708,8 +709,8 @@
               <a href="tel:+33619583693" class="btn btn-primary">
                 📞 Appeler le 06 19 58 36 93
               </a>
-              <a href="mailto:robinjeremy.3663@gmail.com" class="btn btn-ghost">
-                ✉️ robinjeremy.3663@gmail.com
+              <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." class="btn btn-ghost" target="_blank" rel="noopener">
+                💬 WhatsApp Pro
               </a>
             </div>
 
@@ -866,8 +867,8 @@
           <div class="section-eyebrow">Contact</div>
           <h2 class="section-title">Parlons de votre besoin en sécurité</h2>
           <p class="section-subtitle">
-            Un appel ou un message suffit pour prendre rendez-vous sur place
-            et voir ensemble ce qui est possible pour votre maison, commerce ou entreprise.
+            Un appel, un message WhatsApp ou une demande via le formulaire ci-dessous
+            suffisent pour organiser un rendez-vous sur place.
           </p>
         </div>
 
@@ -879,58 +880,81 @@
                 <a href="tel:+33619583693">06 19 58 36 93</a>
               </div>
             </div>
+
+            <div class="contact-row">
+              <div class="contact-label">WhatsApp Pro</div>
+              <div class="contact-value">
+                <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
+                  💬 Discuter sur WhatsApp
+                </a>
+              </div>
+            </div>
+
             <div class="contact-row">
               <div class="contact-label">Email</div>
               <div class="contact-value">
                 <a href="mailto:robinjeremy.3663@gmail.com">robinjeremy.3663@gmail.com</a>
               </div>
             </div>
+
             <div class="contact-row">
               <div class="contact-label">Type de clients</div>
               <div class="contact-value">
                 Particuliers, commerces, petites entreprises, bureaux, entrepôts.
               </div>
             </div>
+
+            <!-- Si tu uploades ton QR en tant que whatsapp-qr.png, il s'affichera ici -->
+            <!--
             <div class="contact-row">
-              <div class="contact-label">Services</div>
+              <div class="contact-label">QR WhatsApp</div>
               <div class="contact-value">
-                Services définis sur place, en fonction de votre situation et de vos attentes.
+                <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
+                <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
+                  Scannez ce QR code pour ouvrir une discussion WhatsApp avec EyeTech Aura.
+                </div>
               </div>
             </div>
+            -->
           </div>
 
+          <!-- FORMULAIRE AVEC FORMSUBMIT -->
           <form class="contact-form" action="https://formsubmit.co/robinjeremy.3663@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
-  <input type="hidden" name="_next" value="https://jerem-ro.github.io/eyetech-aura.github.io/?demande=ok">
+            <!-- options FormSubmit -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
+            <input type="hidden" name="_next" value="https://jerem-ro.github.io/eyetech-aura.github.io/?demande=ok">
 
             <div class="form-grid">
               <div class="form-group">
                 <label for="name">Nom / société</label>
-                <input id="name" name="Nom" type="text" placeholder="Votre nom ou raison sociale" required>
+                <input id="name" name="Nom / Société" type="text" placeholder="Votre nom ou raison sociale" required>
               </div>
+
               <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" name="Email" type="email" placeholder="vous@example.com" required>
               </div>
+
               <div class="form-group">
                 <label for="phone">Téléphone</label>
                 <input id="phone" name="Téléphone" type="tel" placeholder="Votre numéro de téléphone">
               </div>
+
               <div class="form-group">
                 <label for="message">Votre besoin</label>
-                <textarea id="message" name="Message" placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."></textarea>
+                <textarea id="message" name="Message" placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez." required></textarea>
               </div>
             </div>
 
             <div class="form-footer">
               <button type="submit" class="btn btn-primary">
-                ✉️ Envoyer la demande
+                ✉️ Envoyer la demande de devis
               </button>
               <p>
                 En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
-                au sujet de votre demande.
+                pour répondre à votre demande.
               </p>
             </div>
           </form>
@@ -954,4 +978,3 @@
 </script>
 </body>
 </html>
-
