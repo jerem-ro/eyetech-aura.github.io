@@ -600,111 +600,112 @@ body { -webkit-text-size-adjust: 100%; }
         </div>
 
         <div class="contact-grid">
-          <!-- COLONNE GAUCHE -->
-            <div class="contact-info">
-  <!-- 1) Contact (Téléphone) -->
-  <div class="contact-row">
-    <div class="contact-label">Contact</div>
-    <div class="contact-value">
-      <a href="tel:+33619583693">📞 06 19 58 36 93</a>
-    </div>
-  </div>
 
-  <!-- 2) Email -->
-  <div class="contact-row">
-    <div class="contact-label">Email</div>
-    <div class="contact-value">
-      <a href="mailto:robinjeremy.3663@gmail.com">✉️ robinjeremy.3663@gmail.com</a>
+  <!-- COLONNE GAUCHE -->
+  <div class="contact-info">
+    <!-- 1) Contact -->
+    <div class="contact-row">
+      <div class="contact-label">Contact</div>
+      <div class="contact-value">
+        <a href="tel:+33619583693">📞 06 19 58 36 93</a>
+      </div>
     </div>
-  </div>
 
-  <!-- 3) WhatsApp Pro -->
-  <div class="contact-row">
-    <div class="contact-label">WhatsApp Pro</div>
-    <div class="contact-value">
-      <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
-        💬 Discuter sur WhatsApp
-      </a>
+    <!-- 2) Email -->
+    <div class="contact-row">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">
+        <a href="mailto:robinjeremy.3663@gmail.com">✉️ robinjeremy.3663@gmail.com</a>
+      </div>
     </div>
-  </div>
 
-  <!-- 4) QR Code WhatsApp -->
-  <div class="contact-row">
-    <div class="contact-label">QR WhatsApp Pro</div>
-    <div class="contact-value">
-      <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
-      <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
-        Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
+    <!-- 3) WhatsApp Pro -->
+    <div class="contact-row">
+      <div class="contact-label">WhatsApp Pro</div>
+      <div class="contact-value">
+        <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
+          💬 Discuter sur WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- 4) QR Code WhatsApp -->
+    <div class="contact-row">
+      <div class="contact-label">QR WhatsApp Pro</div>
+      <div class="contact-value">
+        <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
+        <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
+          Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5) Type de client -->
+    <div class="contact-row" style="margin-bottom:0;">
+      <div class="contact-label">Type de clients</div>
+      <div class="contact-value">
+        Particuliers, commerces, petites entreprises, bureaux, entrepôts.
       </div>
     </div>
   </div>
 
-  <!-- 5) Type de client -->
-  <div class="contact-row" style="margin-bottom:0;">
-    <div class="contact-label">Type de clients</div>
-    <div class="contact-value">
-      Particuliers, commerces, petites entreprises, bureaux, entrepôts.
+  <!-- COLONNE DROITE : FORMULAIRE (AJAX) -->
+  <form id="quote-form" class="contact-form"
+        action="https://formsubmit.co/3ede1f39fd4bc7acb950433c8b41a901"
+        method="POST" novalidate>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
+
+    <div class="hp" aria-hidden="true">
+      <label>Ne pas remplir</label>
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off">
     </div>
-  </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="name">Nom / société</label>
+        <input id="name" name="Nom / Société" type="text"
+               placeholder="Votre nom ou raison sociale" autocomplete="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email"
+               placeholder="vous@example.com" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Téléphone</label>
+        <input id="phone" name="Téléphone" type="tel"
+               placeholder="Votre numéro de téléphone" autocomplete="tel" inputmode="tel">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Votre besoin</label>
+        <textarea id="message" name="Message"
+                  placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."
+                  required></textarea>
+      </div>
+    </div>
+
+    <div class="form-footer">
+      <button id="submit-btn" type="submit" class="btn btn-primary">
+        ✉️ Envoyer la demande de devis
+      </button>
+
+      <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+
+      <p style="margin:0;">
+        En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
+        pour répondre à votre demande.
+      </p>
+    </div>
+  </form>
+
 </div>
 
-
-          <!-- COLONNE DROITE : FORMULAIRE (AJAX) -->
-          <form id="quote-form" class="contact-form"
-                action="https://formsubmit.co/3ede1f39fd4bc7acb950433c8b41a901"
-                method="POST" novalidate>
-
-            <!-- options FormSubmit -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
-
-            <!-- anti-spam invisible -->
-            <div class="hp" aria-hidden="true">
-              <label>Ne pas remplir</label>
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="name">Nom / société</label>
-                <input id="name" name="Nom / Société" type="text"
-                       placeholder="Votre nom ou raison sociale" autocomplete="name" required>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" name="Email" type="email"
-                       placeholder="vous@example.com" autocomplete="email" required>
-              </div>
-
-              <div class="form-group">
-                <label for="phone">Téléphone</label>
-                <input id="phone" name="Téléphone" type="tel"
-                       placeholder="Votre numéro de téléphone" autocomplete="tel" inputmode="tel">
-              </div>
-
-              <div class="form-group">
-                <label for="message">Votre besoin</label>
-                <textarea id="message" name="Message"
-                          placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."
-                          required></textarea>
-              </div>
-            </div>
-
-            <div class="form-footer">
-              <button id="submit-btn" type="submit" class="btn btn-primary">
-                ✉️ Envoyer la demande de devis
-              </button>
-
-              <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
-
-              <p style="margin:0;">
-                En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
-                pour répondre à votre demande.
-              </p>
-            </div>
-          </form>
 
         </div>
       </div>
@@ -781,6 +782,7 @@ body { -webkit-text-size-adjust: 100%; }
 </script>
 </body>
 </html>
+
 
 
 
