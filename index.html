@@ -230,10 +230,10 @@
     .zone-line strong { color: var(--text); }
 
     .contact-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr 520px; /* gauche flexible, droite fixe */
-  align-items: start;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr 520px;
+      align-items: start;
     }
     .contact-info {
       border-radius: var(--radius);
@@ -254,9 +254,9 @@
     .contact-value a:hover { text-decoration: underline; }
 
     .contact-form {
-  width: 100%;
-  max-width: 520px;   /* même largeur que la colonne droite */
-  justify-self: end;  /* collé à droite */
+      width: 100%;
+      max-width: 520px;
+      justify-self: end;
     }
 
     .form-grid { display: grid; gap: 0.9rem; }
@@ -308,7 +308,6 @@
       color: var(--text-muted);
     }
 
-    /* statut envoi */
     .form-status {
       display: inline-flex;
       align-items: center;
@@ -319,7 +318,6 @@
     .form-status.ok { color: rgba(190, 255, 210, 0.95); }
     .form-status.err { color: rgba(255, 190, 190, 0.95); }
 
-    /* honeypot */
     .hp {
       position: absolute;
       left: -9999px;
@@ -337,9 +335,23 @@
     }
     .footer-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between; }
 
-   @media (max-width: 720px) {
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-form { justify-self: stretch; max-width: 100%; }
+    @media (max-width: 720px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-form { justify-self: stretch; max-width: 100%; }
+
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px;
+      }
+
+      .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .form-footer button {
+        width: 100%;
+      }
     }
 
     @media (min-width: 720px) {
@@ -358,31 +370,9 @@
       .hero-cta-row { flex-direction: column; align-items: stretch; }
       .hero-meta { flex-direction: column; }
     }
- /* ✅ Mobile polish (iPhone/Android) */
-body { -webkit-text-size-adjust: 100%; }
 
-/* Empêche le zoom automatique iOS quand on clique dans un champ (font < 16px) */
-@media (max-width: 720px) {
-  .form-group input,
-  .form-group textarea {
-    font-size: 16px;  /* important pour iOS */
-  }
-
-  /* Le footer du formulaire ne doit pas se serrer en mode "space-between" */
-  .form-footer {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  /* Bouton plein largeur, plus agréable au doigt */
-  .form-footer button {
-    width: 100%;
-  }
-}
-
-/* Tap plus confortable */
-.btn, button { touch-action: manipulation; }
-
+    body { -webkit-text-size-adjust: 100%; }
+    .btn, button { touch-action: manipulation; }
   </style>
 </head>
 
@@ -601,126 +591,117 @@ body { -webkit-text-size-adjust: 100%; }
 
         <div class="contact-grid">
 
-  <!-- COLONNE GAUCHE -->
-  <div class="contact-info">
-    <!-- 1) Contact -->
-    <div class="contact-row">
-      <div class="contact-label">Contact</div>
-      <div class="contact-value">
-        <a href="tel:+33619583693">📞 06 19 58 36 93</a>
-      </div>
-    </div>
+          <!-- COLONNE GAUCHE -->
+          <div class="contact-info">
+            <!-- 1) Contact -->
+            <div class="contact-row">
+              <div class="contact-label">Contact</div>
+              <div class="contact-value">
+                <a href="tel:+33619583693">📞 06 19 58 36 93</a>
+              </div>
+            </div>
 
-    <!-- 2) Email -->
-    <div class="contact-row">
-      <div class="contact-label">Email</div>
-      <div class="contact-value">
-        <a href="mailto:robinjeremy.3663@gmail.com">✉️ robinjeremy.3663@gmail.com</a>
-      </div>
-    </div>
+            <!-- 2) Email -->
+            <div class="contact-row">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a href="mailto:robinjeremy.3663@gmail.com">✉️ robinjeremy.3663@gmail.com</a>
+              </div>
+            </div>
 
-    <!-- 3) WhatsApp Pro -->
-    <div class="contact-row">
-      <div class="contact-label">WhatsApp Pro</div>
-      <div class="contact-value">
-        <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
-          💬 Discuter sur WhatsApp
-        </a>
-      </div>
-    </div>
+            <!-- 3) WhatsApp Pro -->
+            <div class="contact-row">
+              <div class="contact-label">WhatsApp Pro</div>
+              <div class="contact-value">
+                <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
+                  💬 Discuter sur WhatsApp
+                </a>
+              </div>
+            </div>
 
-    <!-- 4) QR Code WhatsApp -->
-    <div class="contact-row">
-      <div class="contact-label">QR WhatsApp Pro</div>
-      <div class="contact-value">
-        <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
-        <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
-          Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
-        </div>
-      </div>
-    </div>
+            <!-- 4) QR Code WhatsApp -->
+            <div class="contact-row">
+              <div class="contact-label">QR WhatsApp Pro</div>
+              <div class="contact-value">
+                <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
+                <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
+                  Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
+                </div>
+              </div>
+            </div>
 
-    <!-- 5) Type de client -->
-    <div class="contact-row" style="margin-bottom:0;">
-      <div class="contact-label">Type de clients</div>
-      <div class="contact-value">
-        Particuliers, commerces, petites entreprises, bureaux, entrepôts.
-      </div>
-    </div>
-  </div>
+            <!-- 5) Type de clients -->
+            <div class="contact-row" style="margin-bottom:0;">
+              <div class="contact-label">Type de clients</div>
+              <div class="contact-value">
+                Particuliers, commerces, petites entreprises, bureaux, entrepôts.
+              </div>
+            </div>
+          </div>
 
-  <!-- COLONNE DROITE : FORMULAIRE (AJAX) -->
-<form id="quote-form" class="contact-form"
-      action="https://formsubmit.co/3ede1f39fd4bc7acb950433c8b41a901"
-      method="POST" novalidate>
+          <!-- COLONNE DROITE : FORMULAIRE -->
+          <form id="quote-form" class="contact-form"
+                action="https://formsubmit.co/3ede1f39fd4bc7acb950433c8b41a901"
+                method="POST" novalidate>
 
-  <!-- ⚙️ Options FormSubmit -->
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
+            <!-- ⚙️ Options FormSubmit -->
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis - EyeTech Aura">
 
-  <!-- 🐝 Honeypot anti-spam -->
-  <div class="hp" aria-hidden="true">
-    <label>Ne pas remplir</label>
-    <input type="text" name="_honey" tabindex="-1" autocomplete="off">
-  </div>
+            <!-- 🐝 Honeypot anti-spam -->
+            <div class="hp" aria-hidden="true">
+              <label>Ne pas remplir</label>
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+            </div>
 
-  <div class="form-grid">
-    <div class="form-group">
-      <label for="name">Nom / société</label>
-      <input id="name" name="Nom / Société" type="text"
-             placeholder="Votre nom ou raison sociale" autocomplete="name" required>
-    </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Nom / société</label>
+                <input id="name" name="Nom / Société" type="text"
+                       placeholder="Votre nom ou raison sociale" autocomplete="name" required>
+              </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <!-- 🔁 IMPORTANT : name="email" -->
-      <input id="email" name="email" type="email"
-             placeholder="vous@example.com" autocomplete="email" required>
-    </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email"
+                       placeholder="vous@example.com" autocomplete="email" required>
+              </div>
 
-    <div class="form-group">
-      <label for="phone">Téléphone</label>
-      <input id="phone" name="Téléphone" type="tel"
-             placeholder="Votre numéro de téléphone" autocomplete="tel" inputmode="tel">
-    </div>
+              <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="Téléphone" type="tel"
+                       placeholder="Votre numéro de téléphone" autocomplete="tel" inputmode="tel">
+              </div>
 
-    <div class="form-group">
-      <label for="message">Votre besoin</label>
-      <textarea id="message" name="Message"
-                placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."
-                required></textarea>
-    </div>
-  </div>
+              <div class="form-group">
+                <label for="message">Votre besoin</label>
+                <textarea id="message" name="Message"
+                          placeholder="Maison, commerce, entrepôt… expliquez en quelques lignes ce que vous cherchez."
+                          required></textarea>
+              </div>
+            </div>
 
-  <!-- ✉️ Accusé de réception automatique au client -->
-  <input type="hidden" name="_autoresponse"
-         value="Merci ! Votre demande de devis a bien été reçue. Nous revenons vers vous sous 24h ouvrées. Pour toute urgence, WhatsApp Pro : 06 19 58 36 93.">
+            <!-- ✉️ Accusé de réception automatique au client -->
+            <input type="hidden" name="_autoresponse"
+                   value="Merci ! Votre demande de devis a bien été reçue. Nous revenons vers vous sous 24h ouvrées. Pour toute urgence, WhatsApp Pro : 06 19 58 36 93.">
 
-  <!-- Sujet du mail auto-réponse -->
-  <input type="hidden" name="_autoresponse_subject"
-         value="Confirmation de votre demande de devis - EyeTech Aura">
+            <!-- 🚀 Redirection après envoi vers la page de remerciement -->
+            <input type="hidden" name="_next"
+                   value="https://jerem-ro.github.io/eyetech-aura.github.io/merci.html">
 
-  <!-- 🚀 Redirection après envoi -->
-  <input type="hidden" name="_next"
-         value="https://jerem-ro.github.io/merci.html">
+            <div class="form-footer">
+              <button id="submit-btn" type="submit" class="btn btn-primary">
+                ✉️ Envoyer la demande de devis
+              </button>
 
-  <div class="form-footer">
-    <button id="submit-btn" type="submit" class="btn btn-primary">
-      ✉️ Envoyer la demande de devis
-    </button>
+              <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
 
-    <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
-
-    <p style="margin:0;">
-      En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
-      pour répondre à votre demande.
-    </p>
-  </div>
-</form>
-
-
-</div>
-
+              <p style="margin:0;">
+                En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
+                pour répondre à votre demande.
+              </p>
+            </div>
+          </form>
 
         </div>
       </div>
@@ -730,22 +711,12 @@ body { -webkit-text-size-adjust: 100%; }
   <footer>
     <div class="container">
       <div class="footer-row">
-        <div>© <span id="year"></span> EyeTech Aura – Tous droits réservés.</div>
+        <div>© <span id="year">2026</span> EyeTech Aura – Tous droits réservés.</div>
         <div>Site vitrine – Alarmes intrusion &amp; vidéosurveillance – Secteur Clermont-Ferrand.</div>
       </div>
     </div>
   </footer>
 </div>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
