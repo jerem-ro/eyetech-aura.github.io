@@ -602,43 +602,53 @@ body { -webkit-text-size-adjust: 100%; }
         <div class="contact-grid">
           <!-- COLONNE GAUCHE -->
           <div class="contact-info">
-            <div class="contact-row">
-              <div class="contact-label">Téléphone</div>
-              <div class="contact-value"><a href="tel:+33619583693">06 19 58 36 93</a></div>
-            </div>
+            <div class="contact-info">
+  <!-- 1) Contact (Téléphone) -->
+  <div class="contact-row">
+    <div class="contact-label">Contact</div>
+    <div class="contact-value">
+      <a href="tel:+33619583693">📞 06 19 58 36 93</a>
+    </div>
+  </div>
 
-            <div class="contact-row">
-              <div class="contact-label">WhatsApp Pro</div>
-              <div class="contact-value">
-                <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9."
-                   target="_blank" rel="noopener">
-                  💬 Discuter sur WhatsApp
-                </a>
-              </div>
-            </div>
+  <!-- 2) Email -->
+  <div class="contact-row">
+    <div class="contact-label">Email</div>
+    <div class="contact-value">
+      <a href="mailto:robinjeremy.3663@gmail.com">✉️ robinjeremy.3663@gmail.com</a>
+    </div>
+  </div>
 
-            <div class="contact-row">
-              <div class="contact-label">Email</div>
-              <div class="contact-value"><a href="mailto:robinjeremy.3663@gmail.com">robinjeremy.3663@gmail.com</a></div>
-            </div>
+  <!-- 3) WhatsApp Pro -->
+  <div class="contact-row">
+    <div class="contact-label">WhatsApp Pro</div>
+    <div class="contact-value">
+      <a href="https://wa.me/33619583693?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20une%20installation%20de%20s%C3%A9curit%C3%A9." target="_blank" rel="noopener">
+        💬 Discuter sur WhatsApp
+      </a>
+    </div>
+  </div>
 
-            <div class="contact-row">
-              <div class="contact-label">Type de clients</div>
-              <div class="contact-value">
-                Particuliers, commerces, petites entreprises, bureaux, entrepôts.
-              </div>
-            </div>
+  <!-- 4) QR Code WhatsApp -->
+  <div class="contact-row">
+    <div class="contact-label">QR WhatsApp Pro</div>
+    <div class="contact-value">
+      <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
+      <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
+        Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
+      </div>
+    </div>
+  </div>
 
-            <div class="contact-row">
-              <div class="contact-label">QR WhatsApp Pro</div>
-              <div class="contact-value">
-                <img src="whatsapp-qr.png" alt="QR code WhatsApp EyeTech Aura" style="max-width:160px;border-radius:12px;margin-top:0.4rem;">
-                <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.35rem;">
-                  Scannez ce QR pour discuter sur WhatsApp avec EyeTech Aura.
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- 5) Type de client -->
+  <div class="contact-row" style="margin-bottom:0;">
+    <div class="contact-label">Type de clients</div>
+    <div class="contact-value">
+      Particuliers, commerces, petites entreprises, bureaux, entrepôts.
+    </div>
+  </div>
+</div>
+
 
           <!-- COLONNE DROITE : FORMULAIRE (AJAX) -->
           <form id="quote-form" class="contact-form"
@@ -772,4 +782,5 @@ body { -webkit-text-size-adjust: 100%; }
 </script>
 </body>
 </html>
+
 
