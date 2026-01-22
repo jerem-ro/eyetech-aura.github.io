@@ -689,6 +689,14 @@ body { -webkit-text-size-adjust: 100%; }
                   required></textarea>
       </div>
     </div>
+<!-- Auto-réponse au client -->
+<input type="hidden" name="_autoresponse" value="Merci ! Votre demande de devis a bien été reçue. Nous revenons vers vous sous 24h ouvrées. Pour toute urgence, WhatsApp Pro : 06 19 58 36 93.">
+
+<!-- Sujet du mail auto-réponse (optionnel mais ça fait pro) -->
+<input type="hidden" name="_autoresponse_subject" value="Confirmation de demande de devis">
+
+<!-- Redirection vers page Merci -->
+<input type="hidden" name="_next" value="https://jerem-ro.github.io/merci.html">
 
     <div class="form-footer">
       <button id="submit-btn" type="submit" class="btn btn-primary">
@@ -782,6 +790,7 @@ body { -webkit-text-size-adjust: 100%; }
 </script>
 </body>
 </html>
+
 
 
 
