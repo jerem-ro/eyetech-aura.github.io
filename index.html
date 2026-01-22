@@ -686,8 +686,23 @@
                    value="Merci ! Votre demande de devis a bien été reçue. Nous revenons vers vous sous 24h ouvrées. Pour toute urgence, WhatsApp Pro : 06 19 58 36 93.">
 
             <!-- 🚀 Redirection après envoi vers la page de remerciement -->
-            <input type="hidden" name="_next"
-       value="https://eyetech-aura.github.io/merci.html">
+            <!-- ✉️ Accusé de réception automatique au client -->
+<input type="hidden" name="_autoresponse"
+       value="Merci ! Votre demande de devis a bien été reçue. Nous revenons vers vous sous 24h ouvrées. Pour toute urgence, WhatsApp Pro : 06 19 58 36 93.">
+
+<div class="form-footer">
+  <button id="submit-btn" type="submit" class="btn btn-primary">
+    ✉️ Envoyer la demande de devis
+  </button>
+
+  <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+
+  <p style="margin:0;">
+    En envoyant ce formulaire, vous acceptez d’être recontacté(e) par EyeTech Aura
+    pour répondre à votre demande.
+  </p>
+</div>
+
 
             <div class="form-footer">
               <button id="submit-btn" type="submit" class="btn btn-primary">
@@ -720,5 +735,6 @@
 
 </body>
 </html>
+
 
 
