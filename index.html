@@ -737,66 +737,10 @@ body { -webkit-text-size-adjust: 100%; }
   </footer>
 </div>
 
-<script>
-  // année footer
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Form AJAX : pas de redirection, pas de page externe
-  const form = document.getElementById('quote-form');
-  const btn = document.getElementById('submit-btn');
-  const statusEl = document.getElementById('form-status');
-
-  function setStatus(text, type) {
-    statusEl.textContent = text || '';
-    statusEl.classList.remove('ok', 'err');
-    if (type) statusEl.classList.add(type);
-  }
-
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // honeypot (si rempli -> bot)
-    const honey = form.querySelector('input[name="_honey"]');
-    if (honey && honey.value.trim()) return;
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) return setStatus('Champs obligatoires manquants.', 'err');
-    if (!isValidEmail(email)) return setStatus('Email invalide.', 'err');
-
-    btn.disabled = true;
-    setStatus('Envoi…');
-
-    try {
-      const data = new FormData(form);
-
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' } // safe, et évite certaines réponses “bizarres”
-      });
-
-      if (res.ok) {
-        setStatus('✅ Envoyé.', 'ok');
-        form.reset();
-      } else {
-        setStatus('❌ Erreur d’envoi. Réessaie.', 'err');
-      }
-    } catch (err) {
-      setStatus('❌ Erreur réseau. Réessaie.', 'err');
-    } finally {
-      btn.disabled = false;
-    }
-  });
-</script>
 </body>
 </html>
+
 
 
 
